@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>JZ</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+  
+  
+    <!-- menu -->
+    <link rel="stylesheet" href="./../css/reset.css">
+    <link rel="stylesheet" href="./../css/style.css">
+    <script language="javascript" src="./../js//jquery-2.1.1.js"></script>
+    <script language="javascript" src="./../js//main.js"></script>
+    
+  
+   <!-- LeanCloud -->
+  <script src="https://code.bdstatic.com/npm/leancloud-storage@5.0.0-beta.0/dist/browser/lc.min.js"></script>
+
+  <!-- Bootstrap -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="./../js/av.js"></script>
+
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://ajax.loli.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+
+  <!-- handlebars -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+
+  <!-- Custom styles for this template -->
+  <link href="./../header.css" rel="stylesheet">
+  <link href="products-list.css" rel="stylesheet">
+  <script type="text/javascript" src="./../initLeanCloud.js"></script>
+  <script type="text/javascript" src="products-list.js"></script>
+</head>
+
+<body>
+  <main>
+  <div class="container">
+    <div class="header clearfix">
+      <!-- <nav>
+        <ul class="nav nav-tabs pull-right">
+          <li role="presentation" ><a href="#" style="padding: 2px 5px" onclick="javascript:history.go(-1);">返回</a></li>
+          <li role="presentation"><a style="padding: 2px 5px" href="./../config/config.html">配置</a></li>
+          <li role="presentation"><a href="#" style="padding: 2px 5px" onclick="logout()">退出</a></li>
+        </ul>
+      </nav> -->
+      <h3 class="text-muted">明细汇总</h3>
+    </div>
+<!-- 
+    <div>
+      <a class="btn btn-primary new-product" href="./../new-product/new-product.html">登记</a>
+      <a class="btn btn-primary new-product" href="./../products-list/products-list.html">汇总</a>
+      <a class="btn btn-primary new-product" href="./../statistics/statistics.html">统计</a>
+    </div> -->
+
+    <div class="row products-detail">
+      <!-- Products list content -->
+      <script id="products-list" type="text/x-handlebars-template">
+        {{#each products}}
+          <section class="shoppingListItem">
+            <div class = "goodsInfo"  ontouchstart="touchstart(event,0)" ontouchmove="touchmove(event,0)" ontouchend="touchend()" onclick="deleteFun(event,0)">
+              <div class="col-sm-6 col-md-4 product-detail">
+                <div class="thumbnail" style="background-color: #eee;">
+                  <!-- <img src={{productImageUrl}}> -->
+                  <div class="caption">
+                    <h4 style="float:left; ">{{{productTitle}}}</h4>
+                    <h4 style="float:right;">{{{price}}}</h4>
+                    </br></br>
+                    <p>描述：{{{productDescription}}}</p>
+                    <p style="float:left;">来自：{{{ownerUsername}}}</p>
+                    <p style="float:right;">{{{releaseTime}}}</p>
+                    </br>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <aside class="hidebtn">
+              <span class="spanbtn collet" onclick="deleteFun(event,${i})">收藏</span>
+              <span class="spanbtn delete">删除</span>
+            </aside>
+
+          </section>
+        {{/each}}
+      </script>
+    </div>
+  </div> <!-- /container -->
+</main>
+
+
+
+<a href="#cd-nav" class="cd-nav-trigger">Menu 
+  <span class="cd-nav-icon"></span>
+  <svg x="0px" y="0px" width="54px" height="54px" viewBox="0 0 54 54">
+  <circle fill="transparent" stroke="#656e79" stroke-width="1" cx="27" cy="27" r="25" stroke-dasharray="157 157" stroke-dashoffset="157"></circle>
+  </svg>
+</a>
+
+<div id="cd-nav" class="cd-nav">
+  <div class="cd-navigation-wrapper">
+    <div class="cd-half-block">
+      <h2>导航菜单</h2>
+
+      <nav>
+        <ul class="cd-primary-nav">
+          <li><a onclick="javascript:history.go(-1);">返回</a></li>
+          <li><a href="./../new-product/new-product.html">登记</a></li>
+          <li><a href="./../products-list/products-list.html"  class="selected">汇总</a></li>
+          <li><a href="./../statistics/statistics.html">统计</a></li>
+          <li><a href="./../config/config.html">配置</a></li>
+          <li><a href="#" onclick="logout()">退出</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="cd-half-block">
+      <address>
+        <ul class="cd-contact-info">
+          <li><a href="mailto:1073300175@qq.com">1073300175@qq.com</a></li>
+          <li>Hai</li>
+          <li>
+            <span>JZ</span>
+            <span>Welcome</span>
+          </li>
+        </ul>
+      </address>
+    </div>
+  </div>
+</div>
+
+</body>
+
+</html>
