@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+	
+    <title>JZ</title>
+		
+
+    <!-- menu -->
+    <link rel="stylesheet" href="./../css/reset.css">
+    <link rel="stylesheet" href="./../css/style.css">
+    <script language="javascript" src="./../js//jquery-2.1.1.js"></script>
+    <script language="javascript" src="./../js//main.js"></script>
+    
+
+
+    <!-- LeanCloud -->
+    <script src="https://code.bdstatic.com/npm/leancloud-storage@5.0.0-beta.0/dist/browser/lc.min.js"></script>
+	<script src="./../js/av.js"></script>
+
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.loli.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- handlebars -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="./../header.css" rel="stylesheet">
+    <link href="statistics.css" rel="stylesheet">
+	
+	
+	<script type="text/javascript" src="echarts.js"></script>
+	
+    <script type="text/javascript" src="./../initLeanCloud.js"></script>
+    <script type="text/javascript" src="statistics.js"></script>
+	
+	
+  </head>
+  <body>
+    <main>
+    <div class="container">
+      <div class="header clearfix">
+        <!-- <nav>
+          <ul class="nav pull-right">
+            <li role="presentation"><a href="#" onclick="logout()">退出登录</a></li>
+          </ul>
+        </nav> -->
+        <h3 class="text-muted">统计分析</h3>
+      </div>
+      <!-- <div>
+        <a class="btn btn-primary new-product" href="./../new-product/new-product.html">登记</a>
+		<a class="btn btn-primary new-product" href="./../products-list/products-list.html">汇总</a>
+		<a class="btn btn-primary new-product" href="./../statistics/statistics.html">统计</a>
+      </div> -->
+	  
+	  <div style="margin-top:15px;">
+	  
+	  <label>快速选择</label>
+	  <select name="time" id="timerange" onchange="selectNewTime(this.options.selectedIndex)">
+	  <option value="day3">请选择</option>
+	  <option value="day3">最近三天</option>
+	  <option value="day7">最近七天</option>
+	  <option value="day30">最近一个月</option>
+	  <option value="by">本月</option>
+	  <option value="sy">上月</option>
+	  <option value="bnd">本年度</option>
+	  </select>
+	  </div>
+	  <div style="width:70%;margin-top:5px ; float:left;">
+	  <label>开始时间</label>
+	  <input type="date" id="startTime" placeholder="开始时间" value="2022-02-12">
+	  </br>
+	  <label>截止时间</label>
+	  <input type="date" id="endTime" placeholder="截止时间" value="2022-02-13">
+	  </div>
+	  <div style="width:20%;float:right;margin-top:15px ;">
+	  <a class="btn btn-primary statistics" onclick="QueryBtn_ClickFun()">查询</a>
+	  </div>
+	  <!-- 饼图-总计 -->
+	  <div id="container" style="height: 200px;clear:both;"></div>
+
+    <!-- 各类别消费汇总 -->
+    <div id="tjClass" style="height: 300px;clear:both;"></div>
+
+
+	  <!-- 每次消费-折线图 -->
+	  <div id="everyData" style="height:200px;"></div>
+	  
+      <div class="row products-detail">
+        <!-- Products list content -->
+        <script id="products-list" type="text/x-handlebars-template">
+          {{#each products}}
+          <div class="col-sm-6 col-md-4 product-detail">
+            <div class="thumbnail">
+              <!-- <img src={{productImageUrl}}> -->
+              <div class="caption">
+				<p style="float:left;">{{{productTitle}}}</p>
+				<p style="float:right;">{{{price}}}</p>
+				<br></br>                
+				<p>描述：{{{productDescription}}}</p>
+				<p style="float:left;">来自：{{{ownerUsername}}}</p>
+                <p style="float:right;">{{{releaseTime}}}</p>
+				</br>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+        </script>
+      </div>
+    </div> <!-- /container -->
+  </main>
+
+
+  
+  <a href="#cd-nav" class="cd-nav-trigger">Menu 
+    <span class="cd-nav-icon"></span>
+    <svg x="0px" y="0px" width="54px" height="54px" viewBox="0 0 54 54">
+    <circle fill="transparent" stroke="#656e79" stroke-width="1" cx="27" cy="27" r="25" stroke-dasharray="157 157" stroke-dashoffset="157"></circle>
+    </svg>
+  </a>
+  
+  <div id="cd-nav" class="cd-nav">
+    <div class="cd-navigation-wrapper">
+      <div class="cd-half-block">
+        <h2>导航菜单</h2>
+  
+        <nav>
+          <ul class="cd-primary-nav">
+            <li><a onclick="javascript:history.go(-1);">返回</a></li>
+            <li><a href="./../new-product/new-product.html">登记</a></li>
+            <li><a href="./../products-list/products-list.html">汇总</a></li>
+            <li><a href="./../statistics/statistics.html"  class="selected">统计</a></li>
+            <li><a href="./../config/config.html">配置</a></li>
+            <li><a href="#" onclick="logout()">退出</a></li>
+          </ul>
+        </nav>
+      </div>
+  
+      <div class="cd-half-block">
+        <address>
+          <ul class="cd-contact-info">
+            <li><a href="mailto:1073300175@qq.com">1073300175@qq.com</a></li>
+            <li>Hai</li>
+            <li>
+              <span>JZ</span>
+              <span>Welcome</span>
+            </li>
+          </ul>
+        </address>
+      </div>
+    </div>
+  </div>
+
+  </body>
+  
+  <!-- <script type="text/javascript" language="JavaScript">InitDateValue()</script> -->
+</html>
+
