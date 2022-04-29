@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JZ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+    
+    
+    <!-- menu -->
+    <link rel="stylesheet" href="./../css/reset.css">
+    <link rel="stylesheet" href="./../css/style.css">
+    <script language="javascript" src="./../js//jquery-2.1.1.js"></script>
+    <script language="javascript" src="./../js//main.js"></script>
+    
+    
+    <!-- LeanCloud -->
+    <script src="https://code.bdstatic.com/npm/leancloud-storage@5.0.0-beta.0/dist/browser/lc.min.js"></script>
+	<script src="./../js/av.js"></script>
+	
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.loli.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="./../header.css" rel="stylesheet">
+    <link href="new-product.css" rel="stylesheet">
+    <script type="text/javascript" src="./../initLeanCloud.js"></script>
+    <script type="text/javascript" src="new-product.js"></script>
+  </head>
+  <body>
+    <main>
+    <div class="container">
+      <div class="header clearfix">
+        <h3 class="text-muted">商品记录</h3>
+      </div>
+	
+		<!-- <input type="button" value="取消" name="" class="but_inpt" onclick="javascript:history.go(-1);" /> -->
+
+      <form class="new-product">
+        <h2 class="new-product-heading">新消费</h2>
+        <label for="product-title" class="sr-only">商品名称</label>
+        <input type="title" id="inputTitle" class="form-control" placeholder="商品名称" required autofocus>
+        
+        <div class="d-category-options">
+        <a class="category-options">商品名称</a>
+        <a class="category-options">商品名称</a>
+        <a class="category-options">商品名称</a>
+        <a class="category-options">商品名称</a>
+        <a class="category-options">商品名称</a>
+        <a class="category-options">商品名称</a>
+        <a class="category-options">商品名称</a>
+      </div>
+
+        <label for="inputPrice" class="sr-only">价格</label>
+        <input type="price" id="inputPrice" class="form-control" placeholder="价格" required>
+
+        
+        <input type="date" id="nowDate" class="form-date"  style="width: 59%;" /> 
+        <input type="time" id="nowTime" class="form-date"  style=" width: 39%;"/>
+
+        <label for="inputDescription" class="sr-only">商品描述</label>
+        <textarea type="description" id="inputDescription" class="form-control" placeholder="商品描述" ></textarea>
+        <!-- <label for="inputFile" class="sr-only">上传图片</label>
+        <input type="file" id="inputFile" class="form-control" placeholder="文件" required>
+		-->
+        <button class="btn btn-lg btn-primary btn-block" type="submit">发布</button>
+		
+      </form>
+    </div> <!-- /container -->
+  </main>
+
+
+  <a href="#cd-nav" class="cd-nav-trigger">Menu 
+    <span class="cd-nav-icon"></span>
+    <svg x="0px" y="0px" width="54px" height="54px" viewBox="0 0 54 54">
+    <circle fill="transparent" stroke="#656e79" stroke-width="1" cx="27" cy="27" r="25" stroke-dasharray="157 157" stroke-dashoffset="157"></circle>
+    </svg>
+  </a>
+  
+  <div id="cd-nav" class="cd-nav">
+    <div class="cd-navigation-wrapper">
+      <div class="cd-half-block">
+        <h2>导航菜单</h2>
+  
+        <nav>
+          <ul class="cd-primary-nav">
+            <li><a onclick="javascript:history.go(-1);">返回</a></li>
+            <li><a href="./../new-product/new-product.html"  class="selected">登记</a></li>
+            <li><a href="./../products-list/products-list.html">汇总</a></li>
+            <li><a href="./../statistics/statistics.html">统计</a></li>
+            <li><a href="./../config/config.html">配置</a></li>
+            <li><a href="#" onclick="logout()">退出</a></li>
+          </ul>
+        </nav>
+      </div>
+  
+      <div class="cd-half-block">
+        <address>
+          <ul class="cd-contact-info">
+            <li><a href="mailto:1073300175@qq.com">1073300175@qq.com</a></li>
+            <li>Hai</li>
+            <li>
+              <span>JZ</span>
+              <span>Welcome</span>
+            </li>
+          </ul>
+        </address>
+      </div>
+    </div>
+  </div>
+
+  </body>
+</html>
