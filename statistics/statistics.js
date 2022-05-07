@@ -262,7 +262,8 @@ function InitDateValue() {
     var month_t = date.getMonth().toString();
     if (date.getMonth() + 1 < 10) month_t = '0' + (date.getMonth() + 1);
     var day_t = date.getDate().toString();
-    if (date.getDate() + 1 < 10) day_t = '0' + (date.getDate() + 1) var dateString = date.getFullYear() + "/" + (month_t) + "/" + (day_t);
+    if (date.getDate() + 1 < 10) day_t = '0' + (date.getDate() + 1)
+    var dateString = date.getFullYear() + "/" + (month_t) + "/" + (day_t);
     start.value = dateString
 }
 
