@@ -10,7 +10,7 @@ function getReleaseTime(KpnsduqHu2) {
     const h = KpnsduqHu2['getHours']();
     const m = KpnsduqHu2['getMinutes']();
     const s = KpnsduqHu2['getSeconds']();
-    return `${year}/${month}/${day}${h}:${m}:${s}`
+    return `${year}/${month}/${day} ${h}:${m}:${s}`
 }
 
 function getShortTime(GDDhUuZGA3) {
